@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt', # <-- DITAMBAHKAN UNTUK TOKEN AUTH
     'corsheaders',
+    'django_filters',
     
     # Aplikasi Lokal Anda
     'ecommerceapp',
@@ -152,6 +153,12 @@ REST_FRAMEWORK = {
         # Gunakan JWT untuk otentikasi API
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 12
 }
 
 # 4. Konfigurasi Simple JWT (Login dengan Email)
